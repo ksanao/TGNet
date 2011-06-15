@@ -79,9 +79,9 @@ The @example/input@ directory contains some sequence (FASTA) and scaffolding (AG
         or
         @./makeCytoscapeNetwork.sh -p example/input/ExampleScaffold.psl -a example/input/Example.agp -n Example@
   *  **On contig level**:
-        @./makeCytoscapeNetwork.sh -g example/input/ExampleContig.fasta -t example/input/ExampleTranscript.fasta -a example/input/Example.agp -n Example@
+        @./makeCytoscapeNetwork.sh -c -g example/input/ExampleContig.fasta -t example/input/ExampleTranscript.fasta -a example/input/Example.agp -n Example@
         or
-        @./makeCytoscapeNetwork.sh -p example/input/ExampleContig.psl -a example/input/Example.agp -n Example@
+        @./makeCytoscapeNetwork.sh -c -p example/input/ExampleContig.psl -a example/input/Example.agp -n Example@
 
 If all goes well, this creates files named @Example.scaffold.attr@, @Example.scaffold.nw@, @Example.contig.attr@, @Example.contig.nw@ for scaffold and contig levels respectfully. They should be identical to the Cytoscape visualization output found in @example/output/@.
 
