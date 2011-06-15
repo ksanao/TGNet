@@ -1,0 +1,15 @@
+contig_name1	interaction	contig_name2	interactionType	strand1strand2	ESTsize	type	tag
+g_s09348	e_5658670	g_c14777	alignment	++	970	merge	OK
+g_s01578	e_5659798	g_c47769	alignment	--	1108	merge	OK
+g_s01578	e_i01474	g_s09348	alignment_Pb	+-	2218	merge	Pb
+g_s09348	e_i04133	g_c08293	alignment	++	1250	merge	OK
+g_s01578	e_i09806	g_c47769	alignment	--	1191	merge	OK
+g_s07831	e_i14868	g_c06158	alignment	+-	3575	merge	OK
+g_s07831	e_i17140	g_c22594	alignment	++	2529	merge	OK
+g_s07831	e_i17320	g_c87374	alignment	+-	2127	merge	OK
+g_c08217	e_i17667	g_s09348	alignment	--	857	merge	OK
+g_c08293	e_i18992	g_s09348	alignment	++	1570	merge	OK
+g_c12374	e_i20263	g_s09348	alignment	++	1596	merge	OK
+g_s09348	e_i20267	g_c28356	alignment	++	1075	merge	OK
+g_s01578	e_i22175	g_s07831	alignment	-+	1514	join	OK
+g_c08393	e_i22212	g_s01578	alignment	--	1187	merge	OK

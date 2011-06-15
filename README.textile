@@ -1,0 +1,130 @@
+h1. Visualization and quality assessment of _de novo_ genome assemblies
+
+h2. Citation
+
+This software is fully described in the paper:
+**Riba-Grognuz, Keller, Falquet, Xenarios & Wurm (submitted) Visualization and quality assessment of _de novo_ genome assemblies of emerging model organisms.**
+
+In brief, our scripts create Cytoscape files to visualize transcript evidence that suggests adjacency between scaffolds and contigs. 
+
+
+h2. Software requirements
+* "BLAT":http://genome.cshlp.org/content/12/4/656.short (tested with Standalone BLAT v. 32x1)
+* "Cytoscape":http://www.cytoscape.org/ (tested with version 2.7.0)
+* a UNIX machine (tested on Mac OS X 10.6 and CentOS 4.6) 
+
+
+h2. Usage
+
+**Input**  : assembly fasta [1], transcript fatsa [2], AGP scaffolding file [3], blat alignment (instead fasta) [4]
+      *# requires scaffolded contig fasta to proceed on contig level (-c flag)
+         requires scaffold (and unscaffolded contig) fasta to proceed on scaffold level
+      *# fasta with transcript sequences obtained independently from genomic assembly
+      *# AGP file specification: http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml
+         requires a set of contiguous sequences separated by gaps in AGP file
+      *# blat alignment in psl format (transcripts to genome assembly)
+**Output** : tab delimited files with nodes, edges and properties
+      *# On contig level (-c flag)
+          out.contig.nw - defines nodes, edges and edge attributes
+          out.contig.attr - defines node attributes
+          out.contig.blat.stat - statistics of blat alignments
+      *# On scaffold level (default)
+          out.scaffold.nw - defines nodes, edges and edge attributes
+          out.scaffold.attr - defines node attributes
+          out.withinOneScaffold - self loop nodes
+          out.scaffold.blat.stat - statistics of blat alignments
+
+**Processing On Scaffold Level**
+@makeCytoscapeNetwork.sh -g genome.fasta -t transcript.fasta -a file.agp [-klinoqsw]@
+@makeCytoscapeNetwork.sh -p blat.alignment.psl -a file.agp [-klinoqsw]@
+
+**Processing On Contig Level**
+ @makeCytoscapeNetwork.sh -g genome.fasta -t transcript.fasta -a file.agp -c [-klinoqsw]@
+ @makeCytoscapeNetwork.sh -p blat.alignment.psl -a file.agp -c [-klinoqsw]@
+
+Use @makeCytoscapeNetwork.sh -h@ for option description
+
+**Options**
+**-a** file specifying scaffolding way in agp format
+**-c** flag to build network on contig level (required if contig.fasta is submitted)
+**-g** fasta file with scaffolded genome contigs (requires -c flag) or
+	fasta file with genomic scaffolds (can include unscaffolded contigs)
+**-h** print help
+**-k** flag to keep blat alignment files
+	default: do not keep
+**-l** match length (bp, minimum transcript match length for blat output filterting)
+	default=200 
+**-n** network.name (string to be used for out files)
+	default=out
+**-o** overlap (bp, maximum overlap of split transcript alignments)
+	default=50 
+**-p** transcript to genome alignment file in psl format (can be submitted instead fasta files)
+**-q** flag to keep folder with temporary files
+**-i** intron size threshold (bp)
+	default=20000 
+**-s** maximum allowed size difference between a gap and a sequence to fill in the gap (bp, required only for scaffold level) 
+	default=4000 
+**-t** fasta file with transcript sequences
+**-w** mismatch (floating, percentage of allowed mismatch bases)
+	default=0.05
+
+
+
+h2. Example data
+
+The @example/input@ directory contains some sequence (FASTA) and scaffolding (AGP) data required to generate the equivalent of Figure 1 from *Riba-Grognuz et al*. These input files are subset from the "fire ant genome project (Wurm et al 2011)":http://www.pnas.org/cgi/doi/10.1073/pnas.1009690108 . These files can be processed as follows:
+
+  *  **On scaffold level**:
+        @./makeCytoscapeNetwork.sh -g example/input/ExampleScaffold.fasta -t example/input/ExampleTranscript.fasta -a example/input/Example.agp -n Example@
+        or
+        @./makeCytoscapeNetwork.sh -p example/input/ExampleScaffold.psl -a example/input/Example.agp -n Example@
+  *  **On contig level**:
+        @./makeCytoscapeNetwork.sh -g example/input/ExampleContig.fasta -t example/input/ExampleTranscript.fasta -a example/input/Example.agp -n Example@
+        or
+        @./makeCytoscapeNetwork.sh -p example/input/ExampleContig.psl -a example/input/Example.agp -n Example@
+
+If all goes well, this creates files named @Example.scaffold.attr@, @Example.scaffold.nw@, @Example.contig.attr@, @Example.contig.nw@ for scaffold and contig levels respectfully. They should be identical to the Cytoscape visualization output found in @example/output/@.
+
+h2. Example of Cytoscape session
+
+* **Importing network**
+    ** From cytoscape menu select File, then Import and choose Network from Table option in drop-down menu
+    ** Select file example/output/Example.scaffold.nw or example/output/Example.contig.nw
+    ** Specify columns 1,2,3 as target,interaction,source respectfully, select all other columns
+    ** Tick a check-box Show Text File Import Options
+    **  Tick a check-box Transcfer first line as attribute names
+    **  Import
+*  **Importing node attributes**
+    ** From cytoscape menu select File, then Import and choose Attribute from Table option in drop-down menu
+    ** Select file example/output/Example.scaffold.attr or example/output/Example.contig.attr
+    ** Tick a check-box Show Text File Import Options
+    ** Tick a check-box Transcfer first line as attribute names
+    ** Import
+* **Importing visual style**
+    ** From cytoscape menu select File, then Import and choose Vizmap Property File ...
+    ** Import a pre-built file @styles/TGNet.props@
+    ** From VizMapper menu select a style called TGNet
+* **Network Layout**
+    ** From cytoscape menu select Layout, then Cytoscape Layouts, then choose Force-Directed Layout, unweighted
+* **Saving Cytoscape Session**
+    ** From cytoscape menu select File, then Save
+
+If all works fine you should get the following session (files below can by opened with Cytoscape)   
+      @example/cytoscape/ExampleScaffold.cys@
+      @example/cytoscape/ExampleContig.cys@
+
+h2. Network interpretation
+
+Network can be interpreted based on topology and visual properties. In many cases topology highlights potential regions for improvements and potential problematic regions. In contig example one of the contigs has three alternative paths: 2 suggested by scaffolding and an extra one suggested by transcript alignment. This is an illustration of potentially problematic case. In scaffold example the same problematic case is not visible from topology, and therefore the inconsistency between scaffolding and transcript mapping information is shown with zigzag connection. In contig example double connections between nodes indicate consistent scaffolding. In scaffold example small nodes linked to bigger ones with arrohead lines indicate potential improvement cases.
+
+
+h2. Frequently asked questions (FAQ)
+
+* **I do not have an AGP file. Can I assess the quality of my assembly?**
+In the absence of AGP file unscaffolded contigs and scaffolds can be processed on scaffold level. All merge cases will be defined as inconsistent in the absence of scafflding information.
+* **My node sizes are not scaled according respective sequence size**
+Check if the maximum and minimum values for node size scaling cover your data (in Vizual properties menu click on node size, then on graph, then on button "Min/Max" and adjust values). If this does not help, check whether the lengths of genomic sequences were improted as integer values.
+
+
+by Oksana Riba
+
