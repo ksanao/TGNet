@@ -132,12 +132,14 @@ Network can be interpreted based on topology and visual properties. In many case
 h2. Frequently asked questions (FAQ)
 
 * **How can I get an AGP file?**
-Some assemblers generate AGP files, for example, newbler generates a file called XXXXXXXXX, which is an "AGP-format":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file with scaffolding information. Other assemblers, like SOAPdenovo, do not produce an "AGP":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file. In this case it is possible to create one based on scaffold sequences: the contiguous sequences separated by gaps should then be defined as contigs and the respective contig and gap coordinates in each scaffold should be specified according to "AGP-format":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml.
+Some assemblers generate AGP files, for example, newbler generates a file called 454Scaffolds.txt, which is an "AGP-format":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file with scaffolding information. Other assemblers, like SOAPdenovo, do not produce an "AGP":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file. In this case it is possible to create one based on scaffold sequences: the contiguous sequences separated by gaps should then be defined as contigs and the respective contig and gap coordinates in each scaffold should be specified according to "AGP-format":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml.
 
 * **I do not have an AGP file. Can I assess the quality of my assembly?**
 In the absence of AGP file unscaffolded contigs and scaffolds can be processed on scaffold level. All merge cases will be defined as inconsistent in the absence of scafflding information.
+
 * **My node sizes are not scaled according to respective sequence lengths**
 Check if the maximum and minimum values for node size scaling cover your data (in Vizual properties menu click on node size, then on graph, then on button "Min/Max" and adjust values). If this does not help, check whether the lengths of genomic sequences were improted as integer values.
+
 * **Why visual style is not applied?**
 Check whether you have selected a style called TGNet from VizMapper menu. Make sure that during import of network and attribute files the first row was transferred as column headers (check-box Transfer first line as attribute names).
 
