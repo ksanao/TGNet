@@ -15,14 +15,14 @@ h2. Software requirements
 h2. Usage
 
 **Input**  : assembly fasta [1], transcript fatsa [2], AGP scaffolding file [3], blat alignment (instead fasta) [4]
-      *# requires scaffolded contig fasta to proceed on contig level (-c flag)
+      *# requires scaffolded contig fasta to proceed on contig level (@-c@ flag)
          requires scaffold (and unscaffolded contig) fasta to proceed on scaffold level
       *# fasta with transcript sequences obtained independently from genomic assembly
-      *# AGP file specification: http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml
-         requires a set of contiguous sequences separated by gaps in AGP file
+      *# requires scaffolding information in "AGP":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file
       *# blat alignment in psl format (transcripts to genome assembly)
+
 **Output** : tab delimited files with nodes, edges and properties and summary of blat alignments
-      *# On contig level (-c flag)
+      *# On contig level (@-c@ flag)
           out.contig.nw - defines nodes, edges and edge attributes
           out.contig.attr - defines node attributes
           out.contig.blat.stat - statistics of blat alignments
@@ -43,32 +43,32 @@ h2. Usage
 Use @makeCytoscapeNetwork.sh -h@ for option description
 
 **Options**
-**-a** file specifying scaffolding way in agp format
-**-c** flag to build network on contig level (required if contig.fasta is submitted)
-**-g** fasta file with scaffolded genome contigs (requires -c flag) or
+@-a@ file specifying scaffolding way in agp format
+@-c@ flag to build network on contig level (required if contig.fasta is submitted)
+@-g@ fasta file with scaffolded genome contigs (requires -c flag) or
 	fasta file with genomic scaffolds (can include unscaffolded contigs)
-**-h** print help
-**-k** flag to keep blat alignment files
+@-h@ print help
+@-k@ flag to keep blat alignment files
 	default: do not keep
-**-l** match length (bp, minimum transcript match length for blat output filterting)
+@-l@ match length (bp, minimum transcript match length for blat output filterting)
 	default=200 
-**-n** network.name (string to be used for out files)
+@-n@ network.name (string to be used for out files)
 	default=out
-**-o** overlap (bp, maximum overlap of split transcript alignments)
+@-o@ overlap (bp, maximum overlap of split transcript alignments)
 	default=50 
-**-p** transcript to genome alignment file in psl format (can be submitted instead fasta files)
-**-q** flag to keep folder with temporary files
-**-i** intron size threshold (bp)
+@-p@ transcript to genome alignment file in psl format (can be submitted instead fasta files)
+@-q@ flag to keep folder with temporary files
+@-i@ intron size threshold (bp)
 	default=20000 
-**-s** maximum allowed size difference between a gap and a sequence to fill in the gap (bp, required only for scaffold level) 
+@-s@ maximum allowed size difference between a gap and a sequence to fill in the gap (bp, required only for scaffold level) 
 	default=4000 
-**-t** fasta file with transcript sequences
-**-w** mismatch (floating, percentage of allowed mismatch bases)
+@-t@ fasta file with transcript sequences
+@-w@ mismatch (floating, percentage of allowed mismatch bases)
 	default=0.05
 
 h2. Example data
 
-The @example/input@ directory contains some sequence (FASTA) and scaffolding (AGP) data required to generate the equivalent of Figure 1 from *Riba-Grognuz et al*. These input files are subset from the "fire ant genome project (Wurm et al 2011)":http://www.pnas.org/cgi/doi/10.1073/pnas.1009690108 . These files can be processed as follows:
+The @example/input@ directory contains some sequence (FASTA) and scaffolding (AGP) data required to generate the equivalent of Figure 1 from _Riba-Grognuz et al_. These input files are subset from the "fire ant genome project (Wurm et al 2011)":http://www.pnas.org/cgi/doi/10.1073/pnas.1009690108 . These files can be processed as follows:
 
   *  **On scaffold level**:
         @./makeCytoscapeNetwork.sh -g example/input/ExampleScaffold.fasta -t example/input/ExampleTranscript.fasta -a example/input/Example.agp -n Example@
@@ -113,32 +113,31 @@ h2. Network interpretation
 
 Network can be interpreted based on topology and visual properties. In many cases topology highlights potential regions for improvements and potential problematic regions. In contig example one of the contigs has three alternative paths: 2 suggested by scaffolding and an extra one suggested by transcript alignment. This is an illustration of potentially problematic case. In scaffold example the same problematic case is not visible from topology, and therefore the inconsistency between scaffolding and transcript mapping information is shown with zigzag connection. In contig example double connections between nodes indicate consistent scaffolding. In scaffold example small nodes linked to bigger ones with arrohead lines indicate potential improvement cases.
 
-** Contig-level Visual Style Description **
-* nodes represent scaffolded contigs, 
-* node sizes are proportional to contig lengths,
-* line widths are proportional to transcript lengths,
-* vertical dashes indicate contig adjacency according to scaffolding information,
-* full lines connect nodes with common aligned transcripts,
-* line colors indictae mapping strands: magenta - plus/plus, cyan - minus/minus, violet - opposite strands. 
-** Scaffold-level Visual Style Description **
-* nodes represent scaffolds and un-scaffolded contigs,
-* node sizes are proportional to contig and scaffold lengths,
-* line widths are proportional to transcript lengths,
-* full lines connect nodes with common aligned transcripts,
-* zigzag lines indicate inconsistency between scaffolding and transcript mapping information,
-* arrows indicate merge (triangle) and join cases (circle),
-* line colors indictae mapping strands: magenta - plus/plus, cyan - minus/minus, violet - opposite strands.
+* **Contig-level Visual Style Description**
+** nodes represent scaffolded contigs, 
+** node sizes are proportional to contig lengths,
+** line widths are proportional to transcript lengths,
+** vertical dashes indicate contig adjacency according to scaffolding information,
+** full lines connect nodes with common aligned transcripts,
+** line colors indictae mapping strands: magenta - plus/plus, cyan - minus/minus, violet - opposite strands. 
+* **Scaffold-level Visual Style Description**
+** nodes represent scaffolds and un-scaffolded contigs,
+** node sizes are proportional to contig and scaffold lengths,
+** line widths are proportional to transcript lengths,
+** full lines connect nodes with common aligned transcripts,
+** zigzag lines indicate inconsistency between scaffolding and transcript mapping information,
+** arrows indicate merge (triangle) and join cases (circle),
+** line colors indictae mapping strands: magenta - plus/plus, cyan - minus/minus, violet - opposite strands.
 
 h2. Frequently asked questions (FAQ)
 
 * **How can I get an AGP file?**
-Some assemblers generate AGP files, for example, newbler generates a file called XXXXXXXXX, which is an AGP-format file with scaffolding information. Other assemblers, like SOAPdenovo, do not produce an AGP file. In this case it is possible to create one based on scaffold sequences: the contiguous sequences separated by gaps should then be defined as contigs and the respective contig and gap coordinates in each scaffold should be specified as described at http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml
+Some assemblers generate AGP files, for example, newbler generates a file called XXXXXXXXX, which is an "AGP-format":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file with scaffolding information. Other assemblers, like SOAPdenovo, do not produce an "AGP":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file. In this case it is possible to create one based on scaffold sequences: the contiguous sequences separated by gaps should then be defined as contigs and the respective contig and gap coordinates in each scaffold should be specified according to "AGP-format":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml.
+
 * **I do not have an AGP file. Can I assess the quality of my assembly?**
 In the absence of AGP file unscaffolded contigs and scaffolds can be processed on scaffold level. All merge cases will be defined as inconsistent in the absence of scafflding information.
 * **My node sizes are not scaled according to respective sequence lengths**
 Check if the maximum and minimum values for node size scaling cover your data (in Vizual properties menu click on node size, then on graph, then on button "Min/Max" and adjust values). If this does not help, check whether the lengths of genomic sequences were improted as integer values.
 * **Why visual style is not applied?**
 Check whether you have selected a style called TGNet from VizMapper menu. Make sure that during import of network and attribute files the first row was transferred as column headers (check-box Transfer first line as attribute names).
-
-by Oksana Riba
 
