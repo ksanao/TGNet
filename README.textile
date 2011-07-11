@@ -9,7 +9,7 @@ In brief, our scripts create Cytoscape files to visualize transcript evidence th
 
 h2. Software requirements
 * "BLAT":http://genome.cshlp.org/content/12/4/656.short (tested with Standalone BLAT v. 32x1)
-* "Cytoscape":http://www.cytoscape.org/ (tested with version 2.7.0)
+* "Cytoscape":http://www.cytoscape.org/ (tested with versions 2.7.0, 2.8.2)
 * a UNIX machine (tested on Mac OS X 10.6 and CentOS 4.6)
 
 h2. Usage
