@@ -77,7 +77,8 @@ startTime=`echo $(date) |awk '{split($4,myS,":"); print myS[1]*360+myS[2]*60+myS
 #### CHECKING SCRIPTS in RELATIVE SCRIPT DIRECTORY
 scriptDIR="$(cd ${0%/*}; echo "$PWD")"
 scriptDIR=$scriptDIR/scripts
-requiredScripts=(blat_filterResults.pl
+requiredScripts=(AGP_keepOnlyScaffolds.pl
+                 blat_filterResults.pl
                  blat_filterDuplicatesWithOverlap.pl
                  blat_buildContigNetworkForCytoscape.pl
                  generateScaffoldingAttributes.pl)
@@ -112,40 +113,30 @@ tempDIR=temp"$(date +%Y%m%d_%H%M%S)"
 mkdir $tempDIR
 if [[ -z $inUserPSL ]]
 then
-    if [[ -z $inAGP ]]
-    then
-       inFILES=($inAssembly $inTranscripts)
-    else
-       inFILES=($inAssembly $inTranscripts $inAGP)
-       myAGP=${inAGP##*/}
-    fi
     #use symlinks in temp dir
+    inFILES=($inAssembly $inTranscripts)
     myAssembly=${inAssembly##*/}
     myTranscripts=${inTranscripts##*/}
 else
-    if [[ -z $inAGP ]]
-    then
-       inFILES=($inUserPSL)
-    else
-       inFILES=($inUserPSL $inAGP)
-       myAGP=${inAGP##*/}
-    fi
+    inFILES=($inUserPSL)
     myUserPSL=${inUserPSL##*/}
 fi
 
 #make symlinks for input files (with absoulute paths)
-#when fake agp, make a variable haveAGP=0
 for onefile in ${inFILES[@]}
 do
-    if [[ "$onefile" != "$startTime".fake.agp ]]
-    then
-       haveAGP=1
-       ln -s "$(cd `dirname $onefile`; echo "$PWD")"/"${onefile##*/}" $tempDIR/
-    else
-       haveAGP=0
-    fi
+    ln -s "$(cd `dirname $onefile`; echo "$PWD")"/"${onefile##*/}" $tempDIR/
 done
 
+#if AGP is input, process it to retain only scaffolds (more than 1 element features)
+if [[ ! -z $inAGP ]]
+then
+    echo Retrieving scaffold features from AGP
+    perl $scriptDIR/AGP_keepOnlyScaffolds.pl $inAGP > $tempDIR/scaffold_only.agp
+    myAGP=scaffold_only.agp
+fi
+
+#go tu RUN directory
 cd $tempDIR
 
 ##### STEP1: RUN BLAT

@@ -11,8 +11,9 @@ myPSL="$outPrefix"_filtered.psl
 
 #generate node attributes: length of contigs
 echo generating node attributes
-printf "node\tlength\n" > "$outPrefix".scaffold.attr
-awk '{print $14"\t"$15}' $myPSL | sort | uniq >> "$outPrefix".scaffold.attr
+awk '{print $14"\t"$15}' $myPSL | sort | uniq > temp.attr
+printf "node\tlength\tstate\n" > "$outPrefix".scaffold.attr
+perl $scriptDIR/classifyNodes.pl -a $myAGP -n temp.attr >> "$outPrefix".scaffold.attr
 
 #generate EST alignment network
 echo building transcript alignment network
@@ -67,9 +68,11 @@ myNW="$outPrefix".network.temp
 
 if [[ -e $myAGP ]]
 then
-   perl $scriptDIR/generateScaffoldingAttributes.pl -a "$myAGP" -n $myNW -l "$outPrefix".scaffold.attr -i $myMaxIntron -d $myMaxDifference > "$outPrefix".network.processed.temp
+   perl $scriptDIR/generateScaffoldingAttributes.pl -a "$myAGP" -n $myNW -l temp.attr -i $myMaxIntron -d $myMaxDifference > "$outPrefix".network.processed.temp
    myNW="$outPrefix".network.processed.temp
 fi
+
+rm temp.attr
 
 #make network simpler and match mizual mapping properties in VizMap.props file
 printf "contig_name1\tinteraction\tcontig_name2\t\

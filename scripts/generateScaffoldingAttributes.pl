@@ -41,7 +41,8 @@ if (!$agp_file || !$nw_file || !$length_file)
 #print header
 print  "source\ttarget\tinteraction\tmatchOnSource\tmatchOnTarget\tmatchStartOnSource\tmatchEndOnSource\tmatchStartOnTarget\tmatchEndOnTarget\tstatus\ttype\testLength\tDownStream\tUpStream\n";
 
-my(@len)=split(/\t/, ` awk 'FNR>1{ORS="\t"; print}' $length_file`);
+#length file has no header as is temp file
+my(@len)=split(/\t/, `awk '{ORS="\t"; print}' $length_file`);
 my(%SQ_len)=(@len);
 
 my(@NW) = split(/;/, `awk 'FNR>1{ORS=";"; print}' $nw_file`);
