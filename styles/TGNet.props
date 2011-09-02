@@ -3,7 +3,7 @@
 # Any changes may make these visual mappings unreadable.
 # Please make sure you know what you are doing before modifying this file by hand.
 #
-#Thu Sep 01 19:59:36 CEST 2011
+#Fri Sep 02 10:10:16 CEST 2011
 edgeAppearanceCalculator.Minimal.defaultEdgeColor=51,51,51
 edgeAppearanceCalculator.Minimal.defaultEdgeFont=SanSerif,plain,10
 edgeAppearanceCalculator.Minimal.defaultEdgeFontSize=10.0
@@ -276,14 +276,14 @@ edgeSourceArrowColorCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Color
 edgeSourceArrowColorCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Color-Discrete\ Mapper.visualPropertyType=EDGE_SRCARROW_COLOR
 edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.controller=type
 edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.controllerType=4
-edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.map.join=CIRCLE
-edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.map.merge=ARROW
+edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.map.join=NONE
+edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.map.merge=CIRCLE
 edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.mapping.type=DiscreteMapping
 edgeSourceArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Source\ Arrow\ Shape-Discrete\ Mapper.visualPropertyType=EDGE_SRCARROW_SHAPE
 edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.controller=type
 edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.controllerType=4
-edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.map.join=CIRCLE
-edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.map.merge=ARROW
+edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.map.join=ARROW
+edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.map.merge=CIRCLE
 edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.mapping.type=DiscreteMapping
 edgeTargetArrowShapeCalculator.ScaffoldCentricNetwork-Edge\ Target\ Arrow\ Shape-Discrete\ Mapper.visualPropertyType=EDGE_TGTARROW_SHAPE
 globalAppearanceCalculator.Minimal.defaultBackgroundColor=153,153,153

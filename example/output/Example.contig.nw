@@ -1,70 +1,70 @@
-contig_name1	interaction	contig_name2	interactionType	strand1strand2	ESTsize	distanceOnScaffold	tag
-g_c85896	e_i21092	g_c85898	alignment	++	1131	24465	OK
-g_c07268	e_i19951	g_c07269	alignment	++	1283	826	OK
-g_c88705	e_i19454	g_c88706	alignment	++	2772	1550	OK
-g_c88698	e_i23705	g_c88697	alignment	--	3391	5234	OK
-g_c88707	e_5649476	g_c88706	alignment	--	603	5541	OK
-g_c88660	e_i09254	g_c88661	alignment	++	856	1750	OK
-g_c07270	e_i09149	g_c07271	alignment	++	1213	597	OK
-g_c88682	e_i01521	g_c88681	alignment	--	2910	1286	OK
-g_c88657	e_i05728	g_c88659	alignment	++	1769	19543	OK
-g_c07296	e_i01474	g_c88686	alignment	+-	2218	0	SCAFFOLD
-g_c85901	e_i19325	g_c01584	alignment	-+	3201	0	SCAFFOLD
-g_c01584	e_i19325	g_c85900	alignment	+-	3201	0	SCAFFOLD
-g_c07292	e_i15109	g_c07291	alignment	--	1906	4178	OK
-g_c88577	e_5649148	g_c88575	alignment	--	598	11484	OK
-g_c88694	e_i06661	g_c88692	alignment	--	1151	53789	OK
-g_c88604	e_5657242	g_c88603	alignment	--	860	2176	OK
-g_c07291	e_i04162	g_c07290	alignment	--	2724	1585	OK
-g_c07290	e_i04162	g_c07289	alignment	--	2724	10203	OK
-g_c88622	e_i20618	g_c88623	alignment	++	1795	967	OK
-g_c88601	e_5649066	g_c88602	alignment	++	596	1614	OK
-g_c07238	e_i22175	g_c85873	alignment	-+	1514	0	SCAFFOLD
-g_c88583	e_i21072	g_c88582	alignment	--	1655	1242	OK
-g_c88637	e_i19326	g_c88638	alignment	++	1938	7197	OK
-g_c88696	e_5659920	g_c88695	alignment	--	1127	5535	OK
-g_c88705	e_i05721	g_c88704	alignment	--	2612	908	OK
-g_c07254	e_i02354	g_c07255	alignment	++	2807	1631	OK
-g_c07238	g_s01578	g_c07254	scaffolding				
-g_c07254	g_s01578	g_c07255	scaffolding				
-g_c07255	g_s01578	g_c07268	scaffolding				
-g_c07268	g_s01578	g_c07269	scaffolding				
-g_c07269	g_s01578	g_c07270	scaffolding				
-g_c07270	g_s01578	g_c07271	scaffolding				
-g_c07271	g_s01578	g_c07289	scaffolding				
-g_c07289	g_s01578	g_c07290	scaffolding				
-g_c07290	g_s01578	g_c07291	scaffolding				
-g_c07291	g_s01578	g_c07292	scaffolding				
-g_c07292	g_s01578	g_c07296	scaffolding				
-g_c85873	g_s07831	g_c85896	scaffolding				
-g_c85896	g_s07831	g_c85898	scaffolding				
-g_c85898	g_s07831	g_c85900	scaffolding				
-g_c85900	g_s07831	g_c85901	scaffolding				
-g_c88575	g_s09348	g_c88577	scaffolding				
-g_c88577	g_s09348	g_c88582	scaffolding				
-g_c88582	g_s09348	g_c88583	scaffolding				
-g_c88583	g_s09348	g_c88601	scaffolding				
-g_c88601	g_s09348	g_c88602	scaffolding				
-g_c88602	g_s09348	g_c88603	scaffolding				
-g_c88603	g_s09348	g_c88604	scaffolding				
-g_c88604	g_s09348	g_c88622	scaffolding				
-g_c88622	g_s09348	g_c88623	scaffolding				
-g_c88623	g_s09348	g_c88637	scaffolding				
-g_c88637	g_s09348	g_c88638	scaffolding				
-g_c88638	g_s09348	g_c88657	scaffolding				
-g_c88657	g_s09348	g_c88659	scaffolding				
-g_c88659	g_s09348	g_c88660	scaffolding				
-g_c88660	g_s09348	g_c88661	scaffolding				
-g_c88661	g_s09348	g_c88681	scaffolding				
-g_c88681	g_s09348	g_c88682	scaffolding				
-g_c88682	g_s09348	g_c88686	scaffolding				
-g_c88686	g_s09348	g_c88692	scaffolding				
-g_c88692	g_s09348	g_c88694	scaffolding				
-g_c88694	g_s09348	g_c88695	scaffolding				
-g_c88695	g_s09348	g_c88696	scaffolding				
-g_c88696	g_s09348	g_c88697	scaffolding				
-g_c88697	g_s09348	g_c88698	scaffolding				
-g_c88698	g_s09348	g_c88704	scaffolding				
-g_c88704	g_s09348	g_c88705	scaffolding				
-g_c88705	g_s09348	g_c88706	scaffolding				
-g_c88706	g_s09348	g_c88707	scaffolding				
+contig_name1	interaction	contig_name2	interactionType	strand1strand2	ESTsize	distanceOnScaffold	tag	type
+g_c85896	e_i21092	g_c85898	alignment	++	1131	24465	OK	
+g_c07268	e_i19951	g_c07269	alignment	++	1283	826	OK	
+g_c88705	e_i19454	g_c88706	alignment	++	2772	1550	OK	
+g_c88698	e_i23705	g_c88697	alignment	--	3391	5234	OK	
+g_c88707	e_5649476	g_c88706	alignment	--	603	5541	OK	
+g_c88660	e_i09254	g_c88661	alignment	++	856	1750	OK	
+g_c07270	e_i09149	g_c07271	alignment	++	1213	597	OK	
+g_c88682	e_i01521	g_c88681	alignment	--	2910	1286	OK	
+g_c88657	e_i05728	g_c88659	alignment	++	1769	19543	OK	
+g_c07296	e_i01474	g_c88686	alignment	+-	2218	0	SCAFFOLD	
+g_c85901	e_i19325	g_c01584	alignment	-+	3201	0	SCAFFOLD	
+g_c01584	e_i19325	g_c85900	alignment	+-	3201	0	SCAFFOLD	
+g_c07292	e_i15109	g_c07291	alignment	--	1906	4178	OK	
+g_c88577	e_5649148	g_c88575	alignment	--	598	11484	OK	
+g_c88694	e_i06661	g_c88692	alignment	--	1151	53789	OK	
+g_c88604	e_5657242	g_c88603	alignment	--	860	2176	OK	
+g_c07291	e_i04162	g_c07290	alignment	--	2724	1585	OK	
+g_c07290	e_i04162	g_c07289	alignment	--	2724	10203	OK	
+g_c88622	e_i20618	g_c88623	alignment	++	1795	967	OK	
+g_c88601	e_5649066	g_c88602	alignment	++	596	1614	OK	
+g_c07238	e_i22175	g_c85873	alignment	-+	1514	0	SCAFFOLD	
+g_c88583	e_i21072	g_c88582	alignment	--	1655	1242	OK	
+g_c88637	e_i19326	g_c88638	alignment	++	1938	7197	OK	
+g_c88696	e_5659920	g_c88695	alignment	--	1127	5535	OK	
+g_c88705	e_i05721	g_c88704	alignment	--	2612	908	OK	
+g_c07254	e_i02354	g_c07255	alignment	++	2807	1631	OK	
+g_c07238	g_s01578	g_c07254	scaffolding					join
+g_c07254	g_s01578	g_c07255	scaffolding					join
+g_c07255	g_s01578	g_c07268	scaffolding					join
+g_c07268	g_s01578	g_c07269	scaffolding					join
+g_c07269	g_s01578	g_c07270	scaffolding					join
+g_c07270	g_s01578	g_c07271	scaffolding					join
+g_c07271	g_s01578	g_c07289	scaffolding					join
+g_c07289	g_s01578	g_c07290	scaffolding					join
+g_c07290	g_s01578	g_c07291	scaffolding					join
+g_c07291	g_s01578	g_c07292	scaffolding					join
+g_c07292	g_s01578	g_c07296	scaffolding					join
+g_c85873	g_s07831	g_c85896	scaffolding					join
+g_c85896	g_s07831	g_c85898	scaffolding					join
+g_c85898	g_s07831	g_c85900	scaffolding					join
+g_c85900	g_s07831	g_c85901	scaffolding					join
+g_c88575	g_s09348	g_c88577	scaffolding					join
+g_c88577	g_s09348	g_c88582	scaffolding					join
+g_c88582	g_s09348	g_c88583	scaffolding					join
+g_c88583	g_s09348	g_c88601	scaffolding					join
+g_c88601	g_s09348	g_c88602	scaffolding					join
+g_c88602	g_s09348	g_c88603	scaffolding					join
+g_c88603	g_s09348	g_c88604	scaffolding					join
+g_c88604	g_s09348	g_c88622	scaffolding					join
+g_c88622	g_s09348	g_c88623	scaffolding					join
+g_c88623	g_s09348	g_c88637	scaffolding					join
+g_c88637	g_s09348	g_c88638	scaffolding					join
+g_c88638	g_s09348	g_c88657	scaffolding					join
+g_c88657	g_s09348	g_c88659	scaffolding					join
+g_c88659	g_s09348	g_c88660	scaffolding					join
+g_c88660	g_s09348	g_c88661	scaffolding					join
+g_c88661	g_s09348	g_c88681	scaffolding					join
+g_c88681	g_s09348	g_c88682	scaffolding					join
+g_c88682	g_s09348	g_c88686	scaffolding					join
+g_c88686	g_s09348	g_c88692	scaffolding					join
+g_c88692	g_s09348	g_c88694	scaffolding					join
+g_c88694	g_s09348	g_c88695	scaffolding					join
+g_c88695	g_s09348	g_c88696	scaffolding					join
+g_c88696	g_s09348	g_c88697	scaffolding					join
+g_c88697	g_s09348	g_c88698	scaffolding					join
+g_c88698	g_s09348	g_c88704	scaffolding					join
+g_c88704	g_s09348	g_c88705	scaffolding					join
+g_c88705	g_s09348	g_c88706	scaffolding					join
+g_c88706	g_s09348	g_c88707	scaffolding					join

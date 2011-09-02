@@ -15,8 +15,8 @@ cut -f1,2,3,6 -s $myAGP | perl $scriptDIR/blat_buildContigNetworkForCytoscape.pl
 #make simplified format for cytoscape (matches pre-defined visual properties VizMap file)
 printf "contig_name1\tinteraction\tcontig_name2\t" > "$outPrefix"."$myTag"
 printf "interactionType\tstrand1strand2\tESTsize\t" >> "$outPrefix"."$myTag"
-printf "distanceOnScaffold\ttag\n" >> "$outPrefix"."$myTag"
-awk 'FNR>1{if ($18=="ORDER" || $18=="ORIENTATION"){myType="alignment_Pb"}else{myType="alignment"}; print $6"\t"$1"\t"$13"\t"myType"\t"$3$10"\t"$2"\t"$17"\t"$18}' "$outPrefix"_filtered.est_network >> "$outPrefix"."$myTag"
+printf "distanceOnScaffold\ttag\ttype\n" >> "$outPrefix"."$myTag"
+awk 'FNR>1{if ($18=="ORDER" || $18=="ORIENTATION"){myType="alignment_Pb"}else{myType="alignment"}; print $6"\t"$1"\t"$13"\t"myType"\t"$3$10"\t"$2"\t"$17"\t"$18"\t"}' "$outPrefix"_filtered.est_network >> "$outPrefix"."$myTag"
 
 #build scaffolding network for contigs present in transcript alignments network
 echo Building scaffolding network
@@ -34,7 +34,7 @@ do
         awk -v myVar="$myL" 'FNR<myVar{print $1}' temp > temp1
         awk 'FNR>1{print $1}' temp > temp2
         awk 'FNR>1{print $2}' temp > temp3
-        paste temp1 temp2 temp3 | awk '{print $1"\t"$3"\t"$2"\tscaffolding\t\t\t\t"}' >> "$outPrefix"."$myTag"
+        paste temp1 temp2 temp3 | awk '{print $1"\t"$3"\t"$2"\tscaffolding\t\t\t\t\tjoin"}' >> "$outPrefix"."$myTag"
     fi
 done
 
