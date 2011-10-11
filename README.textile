@@ -8,7 +8,7 @@ This software is fully described in the paper:
 In brief, our scripts create Cytoscape files to visualize transcript evidence that suggests adjacency between scaffolds and contigs. 
 
 h2. Software requirements
-* "BLAT":http://genome.cshlp.org/content/12/4/656.short (tested with Standalone BLAT v. 32x1)
+* "BLAT":http://genome.cshlp.org/content/12/4/656.short (tested with Standalone BLAT v. 32x1). "Source":http://users.soe.ucsc.edu/~kent/src/ "Binaries":http://hgdownload.cse.ucsc.edu/admin/exe/ .
 * "Cytoscape":http://www.cytoscape.org/ (tested with versions 2.7.0, 2.8.2)
 * a UNIX machine (tested on Mac OS X 10.6 and CentOS 4.6)
 
