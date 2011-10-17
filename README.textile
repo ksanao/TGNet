@@ -3,7 +3,7 @@ h1. Visualization and quality assessment of _de novo_ genome assemblies
 h2. Citation
 
 This software is fully described in the paper:
-**Riba-Grognuz, Keller, Falquet, Xenarios & Wurm (submitted) Visualization and quality assessment of _de novo_ genome assemblies.**
+"**Riba-Grognuz, Keller, Falquet, Xenarios & Wurm (2011) Visualization and quality assessment of _de novo_ genome assemblies.**":http://dx.doi.org/10.1093/bioinformatics/BTR569
 
 In brief, our scripts create Cytoscape files to visualize transcript evidence that suggests adjacency between scaffolds and contigs. 
 
