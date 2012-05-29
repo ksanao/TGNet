@@ -3,12 +3,12 @@ h1. Visualization and quality assessment of _de novo_ genome assemblies
 h2. Citation
 
 This software is fully described in the paper:
-**Riba-Grognuz, Keller, Falquet, Xenarios & Wurm (submitted) Visualization and quality assessment of _de novo_ genome assemblies.**
+"**Riba-Grognuz, Keller, Falquet, Xenarios & Wurm (2011) Visualization and quality assessment of _de novo_ genome assemblies.**":http://dx.doi.org/10.1093/bioinformatics/BTR569
 
 In brief, our scripts create Cytoscape files to visualize transcript evidence that suggests adjacency between scaffolds and contigs. 
 
 h2. Software requirements
-* "BLAT":http://genome.cshlp.org/content/12/4/656.short (tested with Standalone BLAT v. 32x1)
+* "BLAT":http://genome.cshlp.org/content/12/4/656.short (tested with Standalone BLAT v. 32x1). "Source":http://users.soe.ucsc.edu/~kent/src/ "Binaries":http://hgdownload.cse.ucsc.edu/admin/exe/ .
 * "Cytoscape":http://www.cytoscape.org/ (tested with versions 2.7.0, 2.8.2)
 * a UNIX machine (tested on Mac OS X 10.6 and CentOS 4.6)
 
