@@ -172,7 +172,7 @@ myOutFile=$outPrefix.$mytag.blat.stat
 printf "RunName\t"$outPrefix"\n" > $myOutFile
 printf "unfilteredMatches\t" >> $myOutFile
 awk 'FNR>5{print $10}' "$myPSL" | sort | uniq | wc -l >> $myOutFile
-printf "005mismatchMatches\t" >> $myOutFile
+printf "Matches_max_mismatch_$misMatch\t" >> $myOutFile
 mytag=l"$matchLength"f0m"$misMatch"g"$myMaxIntron"e0x30b1t0
 cut -f10 "$outPrefix"_"$mytag".psl | sort | uniq | wc -l >> $myOutFile
 myFraction=(0.50 0.90 0.95 0.99)
