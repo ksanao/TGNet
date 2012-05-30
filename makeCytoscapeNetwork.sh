@@ -109,6 +109,7 @@ myMaxDifference_DEFAULT=4000
 : ${myMaxDifference=$myMaxDifference_DEFAULT}
 
 #### SETUP A TEMPORARY WORKING DIRECTORY
+currentDir=$PWD
 tempDIR=temp"$(date +%Y%m%d_%H%M%S)"
 mkdir $tempDIR
 if [[ -z $inUserPSL ]]
@@ -136,7 +137,7 @@ then
     myAGP=scaffold_only.agp
 fi
 
-#go tu RUN directory
+#go to RUN directory
 cd $tempDIR
 
 ##### STEP1: RUN BLAT
@@ -186,6 +187,7 @@ done
 
 ###### STEP4 generate cytoscape network
 #Swith between contig and scaffold level
+unset -v mytag
 if [[ -z "$cflag" ]]
 then
 	##### SCAFFOLD-LEVEL
@@ -193,24 +195,37 @@ then
 	echo Processing on scaffold-level
 	bash $scriptDIR/processOnScaffoldLevel.sh $outPrefix $scriptDIR $myMaxIntron $myMaxDifference $myAGP
 	myOutFiles=("$outPrefix".scaffold.nw "$outPrefix".scaffold.attr "$outPrefix".withinOneScaffold $outPrefix.scaffold.blat.stat)
-
+        mytag=scaffold
 else	
 	#### CONTIG LEVEL
         # agp file is required
 	echo Processing on contig-level
         bash $scriptDIR/processOnContigLevel.sh $outPrefix $myAGP $scriptDIR
 	myOutFiles=("$outPrefix".contig.nw "$outPrefix".contig.attr $outPrefix.contig.blat.stat)
+        mytag=contig
 fi
 
 mv ${myOutFiles[@]} ..
 
+#print options and in/out files used/generated
+echo -e "\nRUN SUMMARY\n\
+Input_files: ${inFILES[@]}\n\
+Output_directory: $currentDir"
+printf "Output_files: "
+printf "%s " "${myOutFiles[@]}"
+
 #remove alignment files, unless -k flag was set
 if [[ ! -z "$kflag" ]]
 then
-    mv "$outPrefix"_filtered.psl ..
+    outname="$outPrefix"_filtered."$mytag".psl
+    mv "$outPrefix"_filtered.psl ../"$outname"
+    printf "%s " "$outname"
+
     if [[ -z "$inUserPSL" ]]
     then 
-        mv "$outPrefix".psl ..
+        outname="$outPrefix"."$mytag".psl
+        mv "$outPrefix".psl ../"$outname"
+        printf "%s " "$outname"
     fi
 fi
 
@@ -220,13 +235,13 @@ if [[ -z "$qflag" ]]
 then
     rm -r $tempDIR
 else
-    mv $tempDIR "$outPrefix"_"$tempDIR"
+    outname="$outPrefix"_"$mytag"_"$tempDIR"
+    mv $tempDIR "$outname"
+    printf "\nTemporary_directory: $outname"
 fi
 
-#print options and in/out files used/generated
-echo -e "\nRUN SUMMARY\n\
-Input Files: ${inFILES[@]}\n\
-Output Files: ${myOutFiles[@]}\n\
+#continue printing
+echo -e "\n\
 Options: maximum overlap between aligned transcript parts = $maxOverlap bp\n\
          minimum match length = $matchLength bp\n\
          maximum mismatch fraction of alignment = $misMatch\n\
