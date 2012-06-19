@@ -14,12 +14,12 @@ h2. Software requirements
 
 h2. Usage
 
-**Input**  : assembly fasta [1], transcript fatsa [2], AGP scaffolding file [3], blat alignment (instead fasta) [4]
+**Input**  : assembly fasta (1), transcript fasta (2), AGP scaffolding file (3), blat alignment (instead fasta) (4)
       *# requires scaffolded contig fasta to proceed on contig level (@-c@ flag)
          requires scaffold (and unscaffolded contig) fasta to proceed on scaffold level
       *# fasta with transcript sequences obtained independently from genomic assembly
       *# requires scaffolding information in "AGP":http://www.ncbi.nlm.nih.gov/projects/genome/assembly/agp/AGP_Specification.shtml file
-      *# blat alignment in psl format (transcripts to genome assembly)
+      *# blat alignment in psl format instead of fasta (transcripts to genome assembly)
 
 **Output** : tab delimited files with nodes, edges and properties and summary of blat alignments
       *# On contig level (@-c@ flag)
